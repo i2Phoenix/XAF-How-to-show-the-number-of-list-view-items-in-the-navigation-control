@@ -1,4 +1,8 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "crmassistant.api": "apps/crmassistant.api",
+    "crmassistant.app": "apps/crmassistant.app",
+    "crmassistant.bot": "apps/crmassistant.bot"
+  }
 }

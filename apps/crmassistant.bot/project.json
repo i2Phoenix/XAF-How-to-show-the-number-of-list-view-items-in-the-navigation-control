@@ -1,0 +1,52 @@
+{
+  "root": "apps/crmassistant.bot",
+  "sourceRoot": "apps/crmassistant.bot/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/crmassistant.bot",
+        "main": "apps/crmassistant.bot/src/main.ts",
+        "tsConfig": "apps/crmassistant.bot/tsconfig.app.json",
+        "assets": ["apps/crmassistant.bot/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/crmassistant.bot/src/environments/environment.ts",
+              "with": "apps/crmassistant.bot/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "crmassistant.bot:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/crmassistant.bot/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/crmassistant.bot"],
+      "options": {
+        "jestConfig": "apps/crmassistant.bot/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
